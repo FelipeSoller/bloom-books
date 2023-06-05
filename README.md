@@ -1,34 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bloom Books
+
+Welcome to Bloom Books! 📚 Explore a world of captivating reads with our web application. Discover new books, find your favorites, and make your reading experience truly delightful.
+
+## Features
+
+🔎 Browse books by genre
+🔍 Search for books by keywords or genres
+❤️ Mark books as favorites and view your personalized list
+🛒 Buy books directly on Amazon
+
+## Technologies Used
+
+🔧 Next.js: React framework for server-side rendering and static site generation
+⚛️ React: JavaScript library for building user interfaces
+🎨 Tailwind CSS: Utility-first CSS framework
+🌐 Axios: Popular JavaScript library for making HTTP requests from web browsers
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to get a local copy of the project up and running:
 
-```bash
+1. **Clone the repository**:
+
+git clone https://github.com/FelipeSoller/bloom-books
+
+2. **Navigate to the project directory**:
+
+cd bloom-books
+
+3. **Install the dependencies**:
+
+npm install
+
+4. **Set up the application**:
+   - Create an `.env` file in the root of the project.
+   - Add your API key to the field `NYT_API_KEY=YOUR_API_KEY`.
+
+   To use the New York Times (NYT) Books API, please follow these steps:
+
+   a. **Create an account on the New York Times Developer website**: Visit [https://developer.nytimes.com/](https://developer.nytimes.com/) and create a free account. Log in to your account to access the developer area.
+
+   b. **Create an application and obtain an API key**: After logging in, go to the "Apps" section and click on "Create App" to create a new application. Provide a name for your application and fill in the necessary information. Once the application is created, you will receive an API key.
+
+5. **Start the development server**:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+6. **Open your browser** and visit `http://localhost:3000` to access the application.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Contributing
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+We welcome contributions from the community! If you would like to contribute to the project, please follow these steps:
 
-## Learn More
+1. **Fork the repository**.
+2. **Create a new branch** for your feature or bug fix.
+3. **Make the necessary changes** and commit them.
+4. **Push your branch** to your forked repository.
+5. **Submit a pull request** describing your changes.
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is licensed under the [MIT License](LICENSE).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Contact
 
-## Deploy on Vercel
+If you have any questions, feel free to reach out to the project maintainers:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+📧 Felipe Soller - soller@outlook.com
