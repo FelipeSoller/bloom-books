@@ -2,15 +2,18 @@ import { useState } from 'react';
 
 import { fetchBooksByGenre } from '@/api/nytApi';
 
-import BookCard from '@/components/BookCard';
-import BookList from '@/components/BookList';
+import Header from '@/components/Header';
 import SubHeader from '@/components/SubHeader';
 import Pagination from '@/components/Pagination';
 
 export default function Genre({ genre, books }) {
+  const [searchQuery, setSearchQuery] = useState('');
   const [displayMode, setDisplayMode] = useState('list');
   const [perPage, setPerPage] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
 
   const handleDisplayMode = (mode) => {
     setDisplayMode(mode);
@@ -24,13 +27,18 @@ export default function Genre({ genre, books }) {
     setCurrentPage(page);
   };
 
-  const totalPages = Math.ceil(books.length / perPage);
+  const filteredBooks = books.filter((book) =>
+    book.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const totalPages = Math.ceil(filteredBooks.length / perPage);
   const startIndex = (currentPage - 1) * perPage;
   const endIndex = startIndex + perPage;
-  const paginatedBooks = books.slice(startIndex, endIndex);
+  const paginatedBooks = filteredBooks.slice(startIndex, endIndex);
 
   return (
     <div>
+      <Header handleSearch={handleSearch} handleModalOpen={handleModalOpen} />
       <SubHeader
         perPage={perPage}
         handlePerPage={handlePerPage}

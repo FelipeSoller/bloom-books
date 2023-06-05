@@ -2,6 +2,9 @@ import { useState } from 'react';
 
 import { fetchGenreLists } from '@/api/nytApi';
 
+import Header from '@/components/Header';
+import SubHeader from '@/components/SubHeader';
+import GenreList from '@/components/GenreList';
 import GenreCardList from '@/components/GenreCardList';
 import GenreList from '@/components/GenreList';
 import SubHeader from '@/components/SubHeader';
@@ -13,6 +16,9 @@ export default function Home({ genreLists }) {
   const [displayMode, setDisplayMode] = useState('list');
   const [perPage, setPerPage] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
 
   const handleDisplayMode = (mode) => {
     setDisplayMode(mode);
@@ -26,26 +32,18 @@ export default function Home({ genreLists }) {
     setCurrentPage(page);
   };
 
-  const totalPages = Math.ceil(genreLists.length / perPage);
+  const filteredGenreLists = genreLists.filter((genre) =>
+    genre.display_name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const totalPages = Math.ceil(filteredGenreLists.length / perPage);
   const startIndex = (currentPage - 1) * perPage;
   const endIndex = startIndex + perPage;
-  const paginatedGenreLists = genreLists.slice(startIndex, endIndex);
+  const paginatedGenreLists = filteredGenreLists.slice(startIndex, endIndex);
 
   return (
     <div>
-      <SubHeader
-        perPage={perPage}
-        handlePerPage={handlePerPage}
-        handleDisplayMode={handleDisplayMode}
-        displayMode={displayMode}
-      />
-      <div className="mt-5 pl-28 pr-6">
-        {displayMode === 'list' ? (
-          <GenreList genreLists={paginatedGenreLists} />
-        ) : (
-          <GenreCardList genreLists={paginatedGenreLists} />
-        )}
-      </div>
+      <Header handleSearch={handleSearch} handleModalOpen={handleModalOpen} />
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
