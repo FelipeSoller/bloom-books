@@ -47,11 +47,18 @@ export default function BookCard({ books, handleFavorite, favorites }) {
             <p className="text-sm mb-2">Editora {book.publisher}</p>
             <p className="text-sm mb-2">Rank {book.rank}</p>
           </div>
-          <div>
-            {book.amazonProductUrl && (
+          <div className="mt-auto">
+            {!book.amazonProductUrl ? (
+              <button
+                className="inline-block bg-gray-400 text-white py-2 px-4 text-xs rounded-2xl cursor-not-allowed"
+                disabled
+              >
+                Indisponível
+              </button>
+            ) : (
               <Link
                 href={book.amazonProductUrl}
-                className="inline-block bg-blue-500 text-white py-2 px-4 text-xs rounded-2xl mt-auto"
+                className="inline-block bg-blue-500 text-white py-2 px-4 text-xs rounded-2xl mt-2"
               >
                 Compre por {book.price}
               </Link>
