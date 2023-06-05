@@ -39,7 +39,7 @@ cd bloom-books
 npm install
 ```
 4. **Set up the application**:
-   - Create an `.env` file in the root of the project.
+   - Create an `.env.local` file in the root of the project.
    - Add your API key to the field `NYT_API_KEY=YOUR_API_KEY`.
 
    To use the New York Times (NYT) Books API, please follow these steps:
