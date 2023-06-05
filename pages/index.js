@@ -1,4 +1,5 @@
 import { fetchGenreLists } from '@/api/nytApi';
+import Link from 'next/link';
 
 export default function Home({ genreLists }) {
   return (
@@ -7,7 +8,9 @@ export default function Home({ genreLists }) {
         {genreLists.map((genre) => (
           <li key={genre.list_name}>
             <div>
-              <p>{genre.display_name}</p>
+              <Link href={`/genres/${genre.list_name}`}>
+                {genre.display_name}
+              </Link>
               <p>Frequency: {genre.updated}</p>
             </div>
             <p>Frequency: {genre.updated}</p>
