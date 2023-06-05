@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { IoSearch } from 'react-icons/io5';
 import { FiStar } from 'react-icons/fi';
 
@@ -6,8 +7,10 @@ export default function Header({ handleSearch, handleModalOpen }) {
   return (
     <header className="bg-royalBlue p-4 px-2 md:px-28 flex flex-col md:flex-row justify-between items-center">
       <div className="flex items-center justify-between w-full md:w-auto mb-2 md:mb-0">
-        <h1 className="text-white text-3xl font-bold">Bloom Books</h1>
-        <button className="md:hidden" onClick={() => handleModalOpen}>
+        <Link href="/" className="text-white text-3xl font-bold">
+          Bloom Books
+        </Link>
+        <button className="md:hidden" onClick={handleModalOpen}>
           <FiStar className="text-white text-2xl ml-1" />
         </button>
       </div>
