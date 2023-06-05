@@ -1,7 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { FiStar } from 'react-icons/fi';
+import { FaStar } from 'react-icons/fa';
 
-export default function BookList({ books }) {
+export default function BookList({ books, handleFavorite, favorites }) {
+
+  const isBookFavorite = (book) => favorites.some((fav) => fav.title === book.title);
+
   return (
     <ul className="space-y-4 sm:space-y-2">
       {books.map((book) => (
@@ -25,7 +30,17 @@ export default function BookList({ books }) {
                     {book.title}
                   </h2>
                   <p className="text-sm text-slate-500 mb-2 ml-2">By {book.author}</p>
-
+                  <button
+                    className="ml-2 mb-3"
+                    onClick={() => handleFavorite(book)}
+                    aria-label="Favorite"
+                  >
+                    {isBookFavorite(book) ? (
+                      <FaStar className="text-blue-500" />
+                    ) : (
+                      <FiStar className="text-blue-500" />
+                    )}
+                  </button>
                 </div>
                 <p className="text-sm mb-2">{book.description}</p>
                 <p className="text-sm mb-2">Editora {book.publisher}</p>
