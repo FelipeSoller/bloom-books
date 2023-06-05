@@ -5,10 +5,12 @@ import { fetchBooksByGenre } from '@/api/nytApi';
 import BookCard from '@/components/BookCard';
 import BookList from '@/components/BookList';
 import SubHeader from '@/components/SubHeader';
+import Pagination from '@/components/Pagination';
 
 export default function Genre({ genre, books }) {
   const [displayMode, setDisplayMode] = useState('list');
   const [perPage, setPerPage] = useState(5);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleDisplayMode = (mode) => {
     setDisplayMode(mode);
@@ -18,7 +20,12 @@ export default function Genre({ genre, books }) {
     setPerPage(parseInt(e.target.value));
   };
 
-  const startIndex = perPage
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const totalPages = Math.ceil(books.length / perPage);
+  const startIndex = (currentPage - 1) * perPage;
   const endIndex = startIndex + perPage;
   const paginatedBooks = books.slice(startIndex, endIndex);
 
@@ -40,6 +47,11 @@ export default function Genre({ genre, books }) {
           )}
         </div>
       </main>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        handlePageChange={handlePageChange}
+      />
     </div>
   );
 }

@@ -7,10 +7,12 @@ import GenreList from '@/components/GenreList';
 import SubHeader from '@/components/SubHeader';
 
 import 'tailwindcss/tailwind.css';
+import Pagination from '@/components/Pagination';
 
 export default function Home({ genreLists }) {
   const [displayMode, setDisplayMode] = useState('list');
   const [perPage, setPerPage] = useState(5);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleDisplayMode = (mode) => {
     setDisplayMode(mode);
@@ -20,7 +22,12 @@ export default function Home({ genreLists }) {
     setPerPage(parseInt(e.target.value));
   };
 
-  const startIndex = perPage
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const totalPages = Math.ceil(genreLists.length / perPage);
+  const startIndex = (currentPage - 1) * perPage;
   const endIndex = startIndex + perPage;
   const paginatedGenreLists = genreLists.slice(startIndex, endIndex);
 
@@ -39,6 +46,11 @@ export default function Home({ genreLists }) {
           <GenreCardList genreLists={paginatedGenreLists} />
         )}
       </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        handlePageChange={handlePageChange}
+      />
     </div>
   );
 }
