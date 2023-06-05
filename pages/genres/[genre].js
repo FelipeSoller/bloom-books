@@ -1,44 +1,42 @@
 import { useState } from 'react';
-import { FiList, FiGrid } from 'react-icons/fi';
 
 import { fetchBooksByGenre } from '@/api/nytApi';
 
 import BookCard from '@/components/BookCard';
 import BookList from '@/components/BookList';
+import SubHeader from '@/components/SubHeader';
 
-export default function Genre({ books }) {
+export default function Genre({ genre, books }) {
   const [displayMode, setDisplayMode] = useState('list');
+  const [perPage, setPerPage] = useState(5);
 
   const handleDisplayMode = (mode) => {
     setDisplayMode(mode);
   };
 
+  const handlePerPage = (e) => {
+    setPerPage(parseInt(e.target.value));
+  };
+
+  const startIndex = perPage
+  const endIndex = startIndex + perPage;
+  const paginatedBooks = books.slice(startIndex, endIndex);
+
   return (
     <div>
-      <div className="flex flex-col sm:flex-row justify-between items-center bg-slate-100 p-2 px-5 sm:px-28">
-        <div className="flex justify-between items-center mt-2 sm:mt-0">
-          <div className="flex">
-            <button
-              onClick={() => handleDisplayMode('list')}
-              className={`p-2 ml-2 rounded-lg ${displayMode === 'list' ? 'text-royalBlue' : ''}`}
-            >
-              <FiList />
-            </button>
-            <button
-              onClick={() => handleDisplayMode('card')}
-              className={`p-2 ml-2 rounded-lg ${displayMode === 'card' ? 'text-royalBlue' : ''}`}
-            >
-              <FiGrid />
-            </button>
-          </div>
-        </div>
-      </div>
+      <SubHeader
+        perPage={perPage}
+        handlePerPage={handlePerPage}
+        handleDisplayMode={handleDisplayMode}
+        displayMode={displayMode}
+        genre={genre}
+      />
       <main className="sm:pl-5 sm:pr-6">
         <div className="mt-5">
           {displayMode === 'list' ? (
-            <BookList books={books} />
+            <BookList books={paginatedBooks} />
           ) : (
-            <BookCard books={books} />
+            <BookCard books={paginatedBooks} />
           )}
         </div>
       </main>
