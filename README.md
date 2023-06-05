@@ -5,15 +5,21 @@ Welcome to Bloom Books! 📚 Explore a world of captivating reads with our web a
 ## Features
 
 🔎 Browse books by genre
+
 🔍 Search for books by keywords or genres
+
 ❤️ Mark books as favorites and view your personalized list
+
 🛒 Buy books directly on Amazon
 
 ## Technologies Used
 
 🔧 Next.js: React framework for server-side rendering and static site generation
+
 ⚛️ React: JavaScript library for building user interfaces
+
 🎨 Tailwind CSS: Utility-first CSS framework
+
 🌐 Axios: Popular JavaScript library for making HTTP requests from web browsers
 
 ## Getting Started
@@ -21,17 +27,17 @@ Welcome to Bloom Books! 📚 Explore a world of captivating reads with our web a
 Follow these steps to get a local copy of the project up and running:
 
 1. **Clone the repository**:
-
+```
 git clone https://github.com/FelipeSoller/bloom-books
-
+```
 2. **Navigate to the project directory**:
-
+```
 cd bloom-books
-
+```
 3. **Install the dependencies**:
-
+```
 npm install
-
+```
 4. **Set up the application**:
    - Create an `.env` file in the root of the project.
    - Add your API key to the field `NYT_API_KEY=YOUR_API_KEY`.
@@ -43,9 +49,9 @@ npm install
    b. **Create an application and obtain an API key**: After logging in, go to the "Apps" section and click on "Create App" to create a new application. Provide a name for your application and fill in the necessary information. Once the application is created, you will receive an API key.
 
 5. **Start the development server**:
-
+```
 npm run dev
-
+```
 6. **Open your browser** and visit `http://localhost:3000` to access the application.
 
 ## Contributing
